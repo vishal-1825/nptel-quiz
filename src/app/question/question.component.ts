@@ -13,7 +13,7 @@ export class QuestionComponent implements OnInit {
   public questionList: any = [];
   public currentQuestion: number = 0;
   public points: number = 0;
-  totalTime: number = 20;
+  totalTime: number = 7200;
   counter: number = this.totalTime;
   correctAns: number = 0;
   incorrectAns: number = 0;
