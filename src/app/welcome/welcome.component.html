@@ -1,0 +1,23 @@
+<div class="container bg-light py-5">
+    <h1 class="display-5 fw-bold">Welcome to NPTEL Quiz</h1>
+    <p class="col-md-8 fs-4">This quiz contains 120 questions. Each question holds 2 Points.</p>
+    <h4>Rules:</h4>
+    <ol>
+        <li>Correct answer gives you 2 points.</li>
+        <li>Incorrect / unmarked answer gives you 0 points (no negative points).</li>
+        <li>Time limit to complete the quiz is 2 hours.</li>
+        <li>Refreshing the page will reset the quiz.</li>
+    </ol>
+    <h1 style="font-family: cursive;text-align: center;">All the best!!</h1>
+    <div class="name col-md-4 my-3">
+        <label for="name">Enter your name:</label>
+        <input #name type="text" class="form-control"> <!-- #name is a template reference variable -->
+    </div>
+    <button class="btn btn-primary btn-lg" routerLink="/question" (click)="startQuiz()">Start Quiz</button> <!-- Router link helps to go to question page on clicking start quiz button-->
+</div>
+
+
+<!-- NgModel
+Creates a FormControl instance from a domain model and binds it to a form control element.
+Try to use this to make input field compulsory to fill before clicking button.
+-->

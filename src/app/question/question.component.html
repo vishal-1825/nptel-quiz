@@ -1,0 +1,64 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="d-flex justify-content-between p-3">
+            <div class="image">
+                <img src="https://play-lh.googleusercontent.com/CXXHTtxA0eiMsMZPqBY9RLr8Cna2erTPAr27aegOYz7T6Ivv5ha9Q649NrGItiDO8w" alt="swayam-logo" width="150">
+            </div>
+            <div class="quiz-header">
+                <h4 style="font-family: cursive;">Forests and Their Management Quiz</h4>
+                <span style="font-style: italic;">Welcome {{name}}</span>
+            </div>
+        </div>
+
+        <ng-container *ngIf="!isQuizCompleted">
+            <div class="d-flex justify-content-around py-3">
+                <div class="score">
+                    <h5>{{points}} Points</h5>
+                </div>
+                <div class="question-remaining">
+                    <span style="font-style: italic;">Question {{currentQuestion+1}} of {{questionList.length}}</span>
+                </div>
+                <div class="timer">
+                    <h5>{{formatTime(counter)}} ⏰</h5>
+                </div>
+            </div>
+            <div class="progress mb-3" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" [ngStyle]="{'width': progress+'%'}"></div> <!--{{((currentQuestion+1)*100)/questionList.length}}-->
+            </div>
+            <div class="question">
+                <div class="card">
+                    <h4>{{questionList[currentQuestion]?.questionText}}</h4>
+                </div>
+            </div>
+            <div class="options">
+                <ol *ngFor = "let option of questionList[currentQuestion]?.options">
+                    <li (click)="markAnswer(currentQuestion+1, option)">
+                        <div appChangeBg [isCorrect]="option.text===questionList[currentQuestion].answer" class="card">
+                            {{option.text}}
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="d-flex justify-content-between">
+                <button class="btn" [disabled]="currentQuestion===0" (click)="prevQuestion()"><i class="fa fa-3x fa-chevron-left text-secondary"></i></button>
+                <button class="btn" (click)="resetQuiz()"><i class="fa fa-3x fa-refresh text-secondary"></i></button>
+                <button class="btn" (click)="nextQuestion()"><i class="fa fa-3x fa-chevron-right text-secondary"></i></button>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isQuizCompleted">
+            <div class="d-flex justify-content-between">
+                <div class="text-center" style="width: 50%;">
+                    <img style="width: 90%;" class="img-fluid" src="https://media.istockphoto.com/id/1125716911/vector/party-popper-with-confetti.jpg?s=612x612&w=0&k=20&c=sAyofM-MQ5TL-pLyFseV9Vke_W2zyYX1btP90oGJQZE=" alt="">
+                </div>
+                <div class="result text-center" style="width: 50%; padding-top: 8%;">
+                    <h3>Congrats! <br> You have completed the quiz <br> Result: </h3>
+                    <p>Your Score: {{points}} Points</p>
+                    <p>Total number of questions: {{questionList.length}}</p>
+                    <p>Number of questions attempted: {{correctAns+incorrectAns}}</p>
+                    <p>Number of correct answers: {{correctAns}}</p>
+                    <p>Number of incorrect answers: {{incorrectAns}}</p>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

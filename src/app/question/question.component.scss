@@ -1,0 +1,41 @@
+.card
+{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+li
+{
+    list-style-type: none; // to remove the 1, 2, 3, 4 numbering
+    cursor: pointer;
+    margin: 10px 0; 
+}
+
+li .card:hover
+{
+    color: #3B71CA;
+    border: 2px solid #3B71CA;
+    // box-shadow: 0 4px 4px 0 rgba(0,0,0,0.24),0 4px 4px 0 rgba(0,0,0,0.19);
+}
+
+ol
+{
+    padding: 0;
+}
+
+.btn
+{
+    border: none;
+}
+
+.btn:active
+{
+    border: none;
+    // box-shadow: 0 4px 4px 0 rgba(0,0,0,0.24),0 4px 4px 0 rgba(0,0,0,0.19);
+}
+
+.btn:disabled
+{
+    border: none;
+}
